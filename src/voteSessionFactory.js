@@ -1,4 +1,4 @@
-function createVoteSession(candidateNames, vacantEnabled, maxCandidates) {
+function createVoteSession(voteDesc, candidateNames, vacantEnabled, maxCandidates) {
 
     if (!candidateNames || candidateNames.length === 0) {
         throw "No candidates defined";
@@ -29,6 +29,7 @@ function createVoteSession(candidateNames, vacantEnabled, maxCandidates) {
     }
 
     return {
+        votedesc: voteDesc,
         options: candidates,
         vacantOptions: vacantCandidates,
         maximumNbrOfVotes: maxCandidates,
