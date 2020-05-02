@@ -97,11 +97,11 @@ var CreateVoteSession = React.createClass({
                 <h1>Create Vote Session</h1>
                 <div className="form-group">
                     <label htmlFor="vote_desc">Ange vilket val det gäller:</label>
-                    <input type="text" autoComplete="off" autoCapitalize="none" autoCorrect="off" id="vote_desc" onChange={this.changeVoteDesc} value={voteDesc} placeholder="Ange vilket val det gäller.." />
+                    <input type="text" autoFocus={true} autoComplete="off" autoCapitalize="none" autoCorrect="off"  id="vote_desc" onChange={this.changeVoteDesc} value={voteDesc} placeholder="Ange vilket val det gäller.." />
                 </div>
                 <div className="form-group">
                     <label htmlFor="max_candidates">Max selections per vote:</label>
-                    <input type="number" autoFocus={true} min={0} id="max_candidates" onChange={this.changeMaxCandidates} value={maxCandidates} placeholder="Write the max allowed options.." />
+                    <input type="number" min={0} id="max_candidates" onChange={this.changeMaxCandidates} value={maxCandidates} placeholder="Write the max allowed options.." />
                 </div>
                 <div className="form-group">
                     <label htmlFor="vacant">Vacant enabled:</label>
