@@ -1,5 +1,5 @@
 # VoteIT [![Build Status](https://travis-ci.org/cthit/VoteIT.svg)](https://travis-ci.org/cthit/VoteIT)
-A voting system for student Division Meeting (Sektionsmöte).
+A voting system.
 
 ### Features
 * Anonymous voting.
