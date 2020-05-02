@@ -18,6 +18,7 @@ var User = React.createClass({
     getInitialState() {
         return {
             sessionNumber: 0,
+            voteDesc: '',
             maximumNbrOfVotes: 0,
             lowestVacantIndex: 0,
             voteState: POSSIBLE_STATES.noVote,
@@ -47,6 +48,7 @@ var User = React.createClass({
             let voteState = this.mergeVoteState(this.state.voteState, status.state);
             this.setState({
                 sessionNumber: status.sessionNumber,
+                voteDesc: status.voteDesc,
                 maximumNbrOfVotes: status.maximumNbrOfVotes,
                 voteState,
                 winners: status.winners || [],
@@ -132,10 +134,10 @@ var User = React.createClass({
             });
     },
     renderActiveSession() {
-        let { errors, candidates, vacants, sessionNumber, maximumNbrOfVotes, codeLength, lowestVacantIndex } = this.state;
+        let { errors, voteDesc, candidates, vacants, sessionNumber, maximumNbrOfVotes, codeLength, lowestVacantIndex } = this.state;
 
         let numVotesLeft = maximumNbrOfVotes - this.getCheckedCandidates().length;
-
+        
         let numFields = 3;
         let maxLength = codeLength / numFields;
         const codeNumber = sessionNumber + 1;
@@ -143,6 +145,7 @@ var User = React.createClass({
             <div className="voting-components">
                 <div className="vote-header">
                     <div className="left">Vote #{codeNumber}</div>
+                    <div className="left">Spec {voteDesc}</div>
                     <div className="right">Selections left: {numVotesLeft}</div>
                 </div>
                 <CandidateList candidates={candidates} numVotesLeft={numVotesLeft} lowestVacantIndex={lowestVacantIndex} candidateClicked={this.handleCandidateClicked} />
