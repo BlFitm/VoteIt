@@ -8,6 +8,7 @@ var server = require('./backend');
 var CreateVoteSession = React.createClass({
     getInitialState() {
         return {
+            voteDesc: '',
             maxCandidates: 0,
             allowVacants: false,
             options: ['', ''],
@@ -42,6 +43,11 @@ var CreateVoteSession = React.createClass({
             }
         });
     },
+    changeVoteDesc({ target: { value } }) {
+        this.setState({
+            voteDesc: value
+        });
+    },
     changeMaxCandidates({ target: { value } }) {
         this.setState({
             maxCandidates: value
@@ -53,10 +59,11 @@ var CreateVoteSession = React.createClass({
         });
     },
     handleSubmitSession() {
-        let { maxCandidates, allowVacants, options } = this.state;
+        let { voteDesc, maxCandidates, allowVacants, options } = this.state;
         let errors = [];
 
         server.postJSON('/createVoteSession', {
+            votedesc: voteDesc,
             candidates: options,
             vacant: allowVacants,
             max_candidates: maxCandidates
@@ -83,11 +90,15 @@ var CreateVoteSession = React.createClass({
         );
     },
     render() {
-        let { maxCandidates, allowVacants, options, errors } = this.state;
+        let { voteDesc, maxCandidates, allowVacants, options, errors } = this.state;
 
         return (
             <div className="vote-session-form">
                 <h1>Create Vote Session</h1>
+                <div className="form-group">
+                    <label htmlFor="vote_desc">Ange vilket val det gäller:</label>
+                    <input type="text" autoComplete="off" autoCapitalize="none" autoCorrect="off" id="vote_desc" onChange={this.changeVoteDesc} value={voteDesc} placeholder="Ange vilket val det gäller.." />
+                </div>
                 <div className="form-group">
                     <label htmlFor="max_candidates">Max selections per vote:</label>
                     <input type="number" autoFocus={true} min={0} id="max_candidates" onChange={this.changeMaxCandidates} value={maxCandidates} placeholder="Write the max allowed options.." />
