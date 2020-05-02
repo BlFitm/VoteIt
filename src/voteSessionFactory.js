@@ -29,7 +29,7 @@ function createVoteSession(voteDesc, candidateNames, vacantEnabled, maxCandidate
     }
 
     return {
-        votedesc: voteDesc,
+        voteDesc: voteDesc,
         options: candidates,
         vacantOptions: vacantCandidates,
         maximumNbrOfVotes: maxCandidates,
