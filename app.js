@@ -104,6 +104,7 @@ app.get('/status', function(req, res) {
             res.json({
                 sessionNumber: codeManager.currentSession,
                 state: app.locals.CURRENT_STATE,
+                voteDesc: vote.voteDesc,
                 maximumNbrOfVotes: vote.maximumNbrOfVotes,
                 codesGenerated: codeManager.codesGenerated,
                 candidates: vote.options.shuffle(),
@@ -174,6 +175,7 @@ app.post('/createVoteSession', function(req, res) {
 
         try {
             codeManager.nextSession();
+            var voteDesc = req.body.votedesc;
             var candidates = req.body.candidates.map(c => c.trim()).filter(c => c !== '');
 
             var vacantEnabled = req.body.vacant;
@@ -183,9 +185,10 @@ app.post('/createVoteSession', function(req, res) {
             latestResult.winners = [];
             latestResult.rawVotes = [];
 
-            vote = VoteSessionFactory.createVoteSession(candidates, vacantEnabled, maxCandidates);
+            vote = VoteSessionFactory.createVoteSession(voteDesc, candidates, vacantEnabled, maxCandidates);
 
-            voteManager = new VoteManager(vote.options,
+            voteManager = new VoteManager(vote.voteDesc,
+                                          vote.options,
                                           vote.vacantOptions,
                                           vote.maximumNbrOfVotes);
 
