@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cthit/VoteIT.git"
+    "url": "https://github.com/BlFitm/VoteIT.git"
   },
   "keywords": [
     "Voting",
-    "Chalmers"
+    "RSMH"
   ],
-  "author": "digIT",
+  "author": "Al",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cthit/VoteIT/issues"
+    "url": "https://github.com/BlFitm/VoteIT/issues"
   },
   "engines": {
     "node": "11"
