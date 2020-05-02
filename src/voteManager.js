@@ -1,6 +1,7 @@
 require('./utils');
 
-function VoteManager(candidates, vacantCandidates, maximumNbrOfVotes) {
+function VoteManager(voteDesc, candidates, vacantCandidates, maximumNbrOfVotes) {
+    this.voteDesc=voteDesc;
     this.voteCount = createEmptyVoteResults(candidates, vacantCandidates);
     this.maximumNbrOfVotes = maximumNbrOfVotes;
     this.isOpen = true;
